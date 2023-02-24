@@ -3,17 +3,38 @@
     <head>
         <meta charset="utf-8">
         <title>main</title>
-        <script>
-            function chColor() {
-                var arrColor = ["#ff0", "#6c0", "#fcf", "#cf0", "#39f"];
-                var arrNum = Math.floor(Math.random()*5);
-                var bodyTag = document.getElementById("theBody");
-                bodyTag.style.backgroundColor=arrColor[arrNum];
-            }
-        </script>
     </head>
-    <body id="theBody">
-       <button onclick="chColor()">배경 색상 바꾸기</button>
+    <body>
+        <script>
+            function TestScore (name, kor, eng) {
+                this.userName = name;
+                this.userKor = kor;
+                this.userEng = eng;
+            }
 
+            TestScore.prototype.getInfo=function() {
+                var str="";
+                str+="이름: "+this.userName+"<br>";
+                str+="국어: "+this.userKor+"<br>";
+                str+="영어: "+this.userEng+"<br>";
+
+                return str;
+            }
+
+            TestScore.prototype.getAvg=function() {
+                    return (this.userEng+this.userKor)/2;
+                }
+
+            var kim = new TestScore("김군",80,90);
+            var oh = new TestScore("오군",100,80);
+            console.log(kim);
+            console.log(oh);
+
+            document.write(kim.getInfo());
+            document.write("평균 점수: "+kim.getAvg()+"<br><br>");
+
+            document.write(oh.getInfo());
+            document.write("평균 점수: "+oh.getAvg()+"<br>");
+        </script>
     </body>
 </html>
